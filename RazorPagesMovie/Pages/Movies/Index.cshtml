@@ -3,9 +3,21 @@
 
 @{
     ViewData["Title"] = "Index";
+    //The preceding highlighted markup is an example of Razor transitioning into C#. The { and } characters enclose a block of C# code.
 }
 
 <h1>Index</h1>
+
+
+@*Razor can transition from HTML into C# or into Razor-specific markup. 
+When an @ symbol is followed by a Razor reserved keyword, it transitions into Razor-specific markup, otherwise it transitions into C#
+The @page Razor directive makes the file an MVC action, which means that it can handle requests. 
+@page must be the first Razor directive on a page. @page and @model are examples of transitioning into Razor-specific markup.
+
+
+The @model directive specifies the type of the model passed to the Razor Page. 
+In the preceding example, the @model line makes the PageModel derived class available to the Razor Page.
+*@
 
 <p>
     <a asp-page="Create">Create New</a>
@@ -15,6 +27,10 @@
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Movie[0].Title)
+                @*The DisplayNameFor HTML Helper inspects the Title property referenced in the lambda expression to determine the display name. 
+                The lambda expression is inspected rather than evaluated. 
+                That means there is no access violation when model, model.Movie, or model.Movie[0] is null or empty. 
+                When the lambda expression is evaluated, for example, with @Html.DisplayFor(modelItem => item.Title), the model's property values are evaluated.*@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Movie[0].ReleaseDate)

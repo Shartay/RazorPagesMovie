@@ -15,5 +15,6 @@ namespace RazorPagesMovie.Pages
         public void OnGet()
         {
         }
+        // When OnGet returns void or OnGetAsync returns Task, no return statement is used
     }
 }
