@@ -1,10 +1,17 @@
-// The following lines of code in this file create a WebApplicationBuilder with preconfigured defaults, add Razor Pages support to the Dependency Injection (DI) container, and builds the app:
+﻿// The following lines of code in this file create a WebApplicationBuilder with preconfigured defaults, add Razor Pages support to the Dependency Injection (DI) container, and builds the app:
 using System.Text;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using RazorPagesMovie.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+// The following lines of code in this file create a WebApplicationBuilder with preconfigured defaults, add Razor Pages support to the Dependency Injection (DI) container, and builds the app:
+builder.Services.AddDbContext<RazorPagesMovieContext>(options =>
+// The following lines of code in this file create a WebApplicationBuilder with preconfigured defaults, add Razor Pages support to the Dependency Injection (DI) container, and builds the app:
+    options.UseSqlServer(builder.Configuration.GetConnectionString("RazorPagesMovieContext") ?? throw new InvalidOperationException("Connection string 'RazorPagesMovieContext' not found.")));
 
 //Builds the app
 var app = builder.Build();
