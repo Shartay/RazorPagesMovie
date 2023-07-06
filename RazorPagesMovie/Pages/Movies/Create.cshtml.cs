@@ -22,6 +22,7 @@ namespace RazorPagesMovie.Pages.Movies
         public IActionResult OnGet()
         {
             return Page();
+            // When the return type is IActionResult or Task<IActionResult>, a return statement must be provided.
         }
 
         [BindProperty]

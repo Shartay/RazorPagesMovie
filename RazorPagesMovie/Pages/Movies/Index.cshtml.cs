@@ -13,6 +13,7 @@ namespace RazorPagesMovie.Pages.Movies
     public class IndexModel : PageModel
     {
         private readonly RazorPagesMovie.Data.RazorPagesMovieContext _context;
+        // The constructor uses dependency injection to add the RazorPagesMovieContext to the page
 
         public IndexModel(RazorPagesMovie.Data.RazorPagesMovieContext context)
         {
@@ -27,6 +28,8 @@ namespace RazorPagesMovie.Pages.Movies
             {
                 Movie = await _context.Movie.ToListAsync();
             }
+            //When a GET request is made for the page, the OnGetAsync method returns a list of movies to the Razor Page.
+            //On a Razor Page, OnGetAsync or OnGet is called to initialize the state of the page.In this case, OnGetAsync gets a list of movies and displays them.
         }
     }
 }
